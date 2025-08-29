@@ -1,0 +1,8 @@
+// click path and go into it
+{
+  "compilerOptions": {
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  }
+}
