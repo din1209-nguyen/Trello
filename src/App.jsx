@@ -1,12 +1,7 @@
-import { useState } from 'react'
+import Board from "./pages/Boards/_id";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  return <Board />;
+};
 
-  return (
-    <>
-    </>
-  )
-}
-
-export default App
+export default App;
