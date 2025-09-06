@@ -17,14 +17,28 @@ const ThemeMode = () => {
   };
 
   return (
-    <FormControl size="small">
-      <InputLabel id="label-select-theme-mode">Theme</InputLabel>
+    <FormControl size="small" sx={{ minWidth: "120px" }}>
+      <InputLabel
+        id="label-select-theme-mode"
+        sx={{ color: "white", "&.Mui-focused": { color: "white" } }}
+      >
+        Theme
+      </InputLabel>
       <Select
         labelId="label-select-theme-mode"
         id="select-theme-mode"
         value={mode ?? ""}
         label="Theme"
         onChange={handleChange}
+        sx={{
+          color: "white",
+          ".MuiOutlinedInput-notchedOutline": { borderColor: "white" },
+          "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: "white" },
+          "&:Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "white",
+          },
+          ".MuiSvgIcon-root": { color: "white" },
+        }}
       >
         <MenuItem value="light">
           <div

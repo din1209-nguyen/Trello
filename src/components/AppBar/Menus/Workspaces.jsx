@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  Box,
   Button,
   Menu,
   MenuItem,
@@ -29,8 +30,9 @@ const Workspaces = () => {
   };
 
   return (
-    <div>
+    <Box>
       <Button
+        sx={{ color: "white" }}
         id="basic-button-workspaces"
         aria-controls={open ? "basic-menu-workspaces" : undefined}
         aria-haspopup="true"
@@ -86,7 +88,7 @@ const Workspaces = () => {
           <ListItemText>Web Clipboard</ListItemText>
         </MenuItem>
       </Menu>
-    </div>
+    </Box>
   );
 };
 
