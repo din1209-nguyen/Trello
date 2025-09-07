@@ -5,6 +5,7 @@ import AddToDriveIcon from "@mui/icons-material/AddToDrive";
 import BoltIcon from "@mui/icons-material/Bolt";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import { capitalize } from "~/utils/fomatters";
 
 const MENU_STYLES = {
   color: "white",
@@ -20,7 +21,7 @@ const MENU_STYLES = {
   },
 };
 
-const BoardBar = () => {
+const BoardBar = ({ board }) => {
   return (
     <Box
       sx={{
@@ -40,19 +41,19 @@ const BoardBar = () => {
         <Chip
           sx={MENU_STYLES}
           icon={<DashboardIcon />}
-          label="NguyenDin"
+          label={board?.title}
           clickable
         />
         <Chip
           sx={MENU_STYLES}
           icon={<VpnLockIcon />}
-          label="Public/Private Workspace"
+          label={capitalize(board?.type)}
           clickable
         />
         <Chip
           sx={MENU_STYLES}
           icon={<AddToDriveIcon />}
-          label="Public/Private Workspace"
+          label="Add To Google Drive"
           clickable
         />
         <Chip

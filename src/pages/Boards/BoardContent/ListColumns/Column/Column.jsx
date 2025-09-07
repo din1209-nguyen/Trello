@@ -23,9 +23,29 @@ import {
   AddCard,
   DragHandle,
 } from "@mui/icons-material";
-import ListCards from "./ListCards/ListCards";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
-const Column = () => {
+import ListCards from "./ListCards/ListCards";
+import { mapOrder } from "~/utils/sorts";
+
+const Column = ({ column }) => {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: column._id, data: { ...column } });
+
+  /*
+    transform: CSS.Transform.toString(transform)
+    Nếu dùng Transform sẽ bị lỗi scale do thuộc tính transform
+    
+=>  transform: CSS.Translate.toString(transform)
+    Translate sẽ bỏ qua scale
+  */
+  const dndKitColumnStyle = {
+    touchAction: "none",
+    transform: CSS.Translate.toString(transform),
+    transition,
+  };
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -38,6 +58,10 @@ const Column = () => {
 
   return (
     <Box
+      ref={setNodeRef}
+      style={dndKitColumnStyle}
+      {...attributes}
+      {...listeners}
       sx={{
         minWidth: "300px",
         maxWidth: "300px",
@@ -64,7 +88,7 @@ const Column = () => {
           variant="h6"
           sx={{ fontSize: "1.1rem", fontWeight: "bold", cursor: "pointer" }}
         >
-          Column Title
+          {column.title || "Need a title"}
         </Typography>
         <Box>
           <Tooltip title="More options">
@@ -132,7 +156,7 @@ const Column = () => {
       </Box>
 
       {/* Listcards */}
-      <ListCards />
+      <ListCards cards={mapOrder(column?.cards, column?.cardOrderIds, "_id")} />
 
       {/* Footer */}
       <Box
