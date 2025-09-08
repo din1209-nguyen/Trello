@@ -8,7 +8,6 @@ import {
 import Column from "./Column/Column";
 
 const ListColumns = ({ columns }) => {
-  console.log("Render-ListColumns");
   /*
   - SortableContext yêu cầu items là một mảng [id1, id2, id3]
   - Nếu không đúng dạng thì vẫn kéo thả được nhưng không có animation
