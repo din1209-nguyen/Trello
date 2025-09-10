@@ -19,7 +19,7 @@ const mockData = {
           "card-id-04",
           "card-id-05",
           "card-id-06",
-          "card-id-07",
+          "card-id-07", 
         ],
         cards: [
           {
@@ -43,7 +43,7 @@ const mockData = {
             boardId: "board-id-01",
             columnId: "column-id-01",
             title: "Title of card 02",
-            description: null,
+            description: null,  
             cover: null,
             memberIds: ["e"],
             comments: [],
