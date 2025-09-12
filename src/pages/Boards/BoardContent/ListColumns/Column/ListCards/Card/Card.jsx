@@ -1,11 +1,4 @@
-import {
-  Typography,
-  Button,
-  Card as MuiCard,
-  CardActions,
-  CardContent,
-  CardMedia,
-} from "@mui/material";
+import { Typography, Button, Card as MuiCard, CardActions, CardContent, CardMedia } from "@mui/material";
 
 import { Group, Comment, Attachment } from "@mui/icons-material";
 
@@ -13,14 +6,10 @@ import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 const Card = ({ card }) => {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({ id: card._id, data: { ...card } });
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: card._id,
+    data: { ...card },
+  });
 
   /*
       transform: CSS.Transform.toString(transform)
@@ -38,11 +27,7 @@ const Card = ({ card }) => {
   };
 
   const showCardAction = () => {
-    return (
-      !!card?.memberIds?.length ||
-      !!card?.comments?.length ||
-      !!card?.attachments?.length
-    );
+    return !!card?.memberIds?.length || !!card?.comments?.length || !!card?.attachments?.length;
   };
 
   return (
@@ -55,6 +40,8 @@ const Card = ({ card }) => {
         cursor: "pointer",
         boxShadow: "0 1px 1px rgba(0, 0, 0, 0.2)",
         overflow: "unset",
+        opacity: card.FE_PlaceholderCard ? "0" : "1",
+        height: card.FE_PlaceholderCard ? "4px" : "unset",
       }}
     >
       {card?.cover && <CardMedia sx={{ height: 140 }} image={card?.cover} />}
